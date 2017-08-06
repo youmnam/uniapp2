@@ -6,7 +6,7 @@ skip_before_action :verify_authenticity_token
 
 	def getAllSchools
 	 	@Schools = School.select("schools.id , schools.school_name,  schools.school_city , schools.school_area , schools.\"school_feesRange\" , schools.school_logo,
-                (select  ( (sum(rate1)/count(id))+ (sum(rate2)/count(id)) +(sum(rate3)/count(id)) + (sum(rate4)/count(id)) ) /4 as Total_Rating 
+                (select  ( (sum(rate1)/count(ratings.id))+ (sum(rate2)/count(ratings.id)) +(sum(rate3)/count(ratings.id)) + (sum(rate4)/count(ratings.id)) )/4 as Total_Rating 
 	 	           	 from ratings where schools.id = ratings.school_id group by school_id ) , 
 	 	           	 (select   count(id) as num_raters 
 	 	           	 from ratings where schools.id = ratings.school_id group by school_id ) 
@@ -27,7 +27,7 @@ skip_before_action :verify_authenticity_token
   	end
   
 	def getAllSchoolsNames
-	@Schools = School.select('id, school_name').where(" status = true")	
+	@Schools = School.select('id, school_name,token').where(" status = true")	
 	render json: @Schools.to_json
 	#head :no_content
 	end
@@ -42,8 +42,18 @@ skip_before_action :verify_authenticity_token
 	end
 
 	def get_school_info
-	  @school = School.find(params[:id])
-	  render json: @school
+	  #@school = School.find(params[:id])
+	  #render json: @school
+@Schools = School.select("schools.* ,
+                (select  ( (sum(rate1)/count(id))+ (sum(rate2)/count(id)) +(sum(rate3)/count(id)) + (sum(rate4)/count(id)) ) /4 as Total_Rating 
+	 	           	 from ratings where schools.id = ratings.school_id group by school_id ) , 
+	 	           	 (select   count(id) as num_raters 
+	 	           	 from ratings where schools.id = ratings.school_id group by school_id ) 
+	 	 ").where("status = true AND id ="+params[:id]+"")
+
+
+	render json: @Schools[0].to_json
+
 	end
 	  
 
