@@ -48,6 +48,17 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address        => 'smtp.gmail.com',
+  :domain         => 'mail.google.com',
+  :port           => 587,
+  :user_name      => 'magdy.youmna@gmail.com',
+  :password       => 'spiderman33',
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
