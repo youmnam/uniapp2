@@ -2,9 +2,13 @@
 lock "3.9.0"
 
 set :application, 'uniapp2'
-set :repo_url, 'git@github.com:youmnam/uniapp2.git' # Edit this to match your repository
+set :repo_url, 'https://github.com/youmnam/uniapp2.git' # Edit this to match your repository
 set :branch, :master
+
+set :user, 'deploy'
 set :deploy_to, '/home/deploy/uniapp2'
+set :use_sudo, false
+set :scm, :git
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
