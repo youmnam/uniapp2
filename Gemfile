@@ -68,6 +68,15 @@ group :development do
   gem 'spring'
 end
 
+gem 'figaro'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+end
+
 #Validates on the client side 
 gem 'client_side_validations'
 gem 'valid_url'
