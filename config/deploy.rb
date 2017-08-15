@@ -2,7 +2,7 @@
 lock "3.9.0"
 
 set :application, 'uniapp2'
-set :repo_url, 'git@github.com:devdatta/contactbook.git' # Edit this to match your repository
+set :repo_url, 'git@github.com:youmnam/uniapp2.git' # Edit this to match your repository
 set :branch, :master
 set :deploy_to, '/home/deploy/uniapp2'
 set :pty, true
