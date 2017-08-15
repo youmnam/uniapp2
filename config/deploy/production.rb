@@ -8,6 +8,11 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 server '13.58.142.33', user: 'deploy', roles: %w{web app db}
+ set :ssh_options, {
+    keys: %w(/home/deploy/.ssh/id_rsa),
+    forward_agent: false,
+    auth_methods: %w(password)
+  }
 
 # role-based syntax
 # ==================
