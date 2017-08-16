@@ -45,6 +45,7 @@ require 'capistrano/nginx'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 
+require 'capistrano/puma/nginx'
 
 require 'capistrano/upload-config'
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
