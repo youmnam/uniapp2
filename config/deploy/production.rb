@@ -7,6 +7,8 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+
+
 server '18.220.214.94', user: 'deploy', roles: %w{web app db}
  set :ssh_options, {
     keys: %w(/home/youmna/.ssh/id_rsa),
