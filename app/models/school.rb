@@ -43,6 +43,11 @@ def self.find_school( searchCrieria )
  if searchCrieria[:area] != "" && searchCrieria[:area] != " '' "
     $query += " AND  school_area in " + "("+searchCrieria[:area]+")"
  end
+
+ if searchCrieria[:specialNeed] != "" && searchCrieria[:specialNeed] != " '' "
+    $query += " AND  specialNeed = " +searchCrieria[:specialNeed]+""
+ end
+
  
  if searchCrieria[:grades_availabilty] != "" && searchCrieria[:grades_availabilty] != " '' "
     $query += " AND  \"school_availableGrades\" in " + " (#{searchCrieria[:grades_availabilty]}) "

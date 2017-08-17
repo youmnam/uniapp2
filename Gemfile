@@ -16,7 +16,7 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 
 group :assets do
-  gem 'therubyracer'
+  gem 'therubyracer', '~> 0.12.3'
   gem 'sass-rails',   '~> 5.0'
   gem 'coffee-rails', '~> 4.2'
   gem 'uglifier' , '>= 1.3.0'

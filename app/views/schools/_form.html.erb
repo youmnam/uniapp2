@@ -159,6 +159,11 @@
              <%= form.check_box :school_foreignTeachers, id: :school_school_foreignTeachers %>
              <%= form.label :school_foreignTeachers, " Foreign Teachers"  %>
             </div>
+                 <div class="input-group">
+        <%= form.check_box :specialNeed, id: :school_specialNeed %>
+        <%= form.label :specialNeed %>
+      </div>
+
              <div class="input-group input-group-icon">
          <%= form.text_field :school_availableGrades, id: :school_school_availableGrades,  placeholder: "Grades Available till? (8,12?)" %>
           <div class="input-icon"><i class="fa fa-cubes"></i></div>
