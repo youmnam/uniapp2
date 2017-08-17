@@ -21,8 +21,7 @@ module Irentex
     # config.i18n.default_locale = :de
     config.serve_static_assets = true
     config.assets.compile = true
-    config.assets.css_compressor = :yui
-config.assets.js_compressor = :uglifier
+
  config.middleware.use Rack::Deflater
 
     config.middleware.use Rack::Cors do
