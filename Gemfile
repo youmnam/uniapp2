@@ -22,7 +22,7 @@ group :assets do
   gem 'uglifier' , '>= 1.3.0'
 end
 
-gem 'yui-compressor', '~> 0.12.0'
+gem 'yui-compressor', '~> 0.11.0'
 
 #image uploading gems
 gem 'carrierwave', '~> 1.0'
