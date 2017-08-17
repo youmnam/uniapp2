@@ -128,7 +128,6 @@ GEM
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
     libv8 (3.16.14.3)
-    libv8 (3.16.14.3-x86_64-linux)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -250,7 +249,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    yui-compressor (0.12.0)
+    yui-compressor (0.11.0)
 
 PLATFORMS
   ruby
@@ -290,7 +289,7 @@ DEPENDENCIES
   valid_url
   validates_email_format_of
   web-console (~> 2.0)
-  yui-compressor (~> 0.12.0)
+  yui-compressor (~> 0.11.0)
 
 BUNDLED WITH
    1.15.3
