@@ -60,6 +60,16 @@ def update
         format.json { render json: @school.errors, status: :unprocessable_entity }
       end
     end
+  else
+    respond_to do |format|
+      if @school.update(update_params)
+        format.html { redirect_to schools_url, notice: "#{@school.school_name} Was Successfully updated."  }
+        format.json { render :show, status: :ok, location: @school }
+      else
+        format.html { render :edit }
+        format.json { render json: @school.errors, status: :unprocessable_entity }
+      end
+    end
   end  
 end
 
