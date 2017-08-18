@@ -161,7 +161,7 @@
             </div>
                  <div class="input-group">
         <%= form.check_box :specialNeed, id: :school_specialNeed %>
-        <%= form.label :specialNeed %>
+        <%= form.label :specialNeed, 'Special Needs' %>
       </div>
 
              <div class="input-group input-group-icon">
@@ -178,46 +178,46 @@
       <h4>School Facilities</h4>
       <div class="input-group">
           <%= form.check_box :school_cafeteria, id: :school_school_cafeteria %>
-          <%= form.label :school_cafeteria %>
+          <%= form.label :school_cafeteria, 'Cafeteria' %>
       </div>
 
      <div class="input-group">
     <%= form.check_box :school_soccerPlayground, id: :school_school_soccerPlayground %>
-    <%= form.label :school_soccerPlayground %>
+    <%= form.label :school_soccerPlayground, 'Soccer Playground ' %>
       </div>
 
            <div class="input-group">
 
     <%= form.check_box :school_InnovationSpaces, id: :school_school_InnovationSpaces %>
-    <%= form.label :school_InnovationSpaces %>
+    <%= form.label :school_InnovationSpaces, 'Innovation Spaces' %>
       </div>
 
            <div class="input-group">
     <%= form.check_box :school_theater, id: :school_school_theater %>
-        <%= form.label :school_theater %>
+        <%= form.label :school_theater , 'Theater'%>
       </div>
 
 
            <div class="input-group">
     <%= form.check_box :school_computerLabs, id: :school_school_computerLabs %>
-               <%= form.label :school_computerLabs %>
+               <%= form.label :school_computerLabs, 'Computer Labs' %>
 
       </div>
 
            <div class="input-group">
     <%= form.check_box :school_scienceLab, id: :school_school_scienceLab %>
-           <%= form.label :school_scienceLab %>
+           <%= form.label :school_scienceLab, 'Science Lab' %>
       </div>
 
            <div class="input-group">
     <%= form.check_box :school_library, id: :school_school_library %>
-     <%= form.label :school_library %>
+     <%= form.label :school_library, 'Library' %>
       </div>
 
            <div class="input-group">
 
     <%= form.check_box :school_swimmingPool, id: :school_school_swimmingPool %>
-<%= form.label :school_swimmingPool %>
+<%= form.label :school_swimmingPool, 'Swimming Pool' %>
       </div>
 
     </div>
@@ -244,8 +244,6 @@
 <% end %>
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-    <script src="js/index.js"></script>
     
 
 <script>
@@ -253,8 +251,8 @@ var select1 = document.getElementById("select1");
 var select2 = document.getElementById("select2");
 
 var cairo = ['6th of October City','10th of Ramadan City','15th of May City','Abbassia'
-                    ,'Cairo','Dokki','Dreamland','El Rehab','El Shorouk','Fifth Settlement'
-                    ,'Heliopolis Cairo','Helwan','Imbaba','Kerdasa','Madinaty','Mohandessin'
+                    ,'Cairo','Dreamland','El Rehab','El Shorouk','Fifth Settlement'
+                    ,'Heliopolis Cairo','Helwan','Imbaba','Kerdasa', 'Maadi','Madinaty','Mohandessin'
                     ,'Mokattam','Nasr City','New Cairo','New Heliopolis','Obour City','Sheikh Zayed City'
                     ,'Shubra El Kheima','Zamalek','El-Haram']
 
