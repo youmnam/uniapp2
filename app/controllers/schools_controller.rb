@@ -77,8 +77,8 @@ end
     
     @school = School.find(params[:id])
     respond_to do |format|
-    
-      if  SchoolTokenMailer.send_token(@school).deliver_now && @school.update_attribute(:status,true)
+    #SchoolTokenMailer.send_token(@school).deliver_now &&
+      if   @school.update_attribute(:status,true)
        if @school.update_attribute(:expire,DateTime.now + 30.days) 
         format.html { redirect_to schools_url, notice: "#{@school.school_name} Was Successfully approved." }
         format.json { head :no_content }
