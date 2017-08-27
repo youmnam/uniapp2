@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Apps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> ID </th>
+      <th> Name </th>
+      <th> Email </th>
+        <th> ppic </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_apps.each do |user_app| %>
+     <tr> 
+        <td><%= user_app.id %> </td>
+        <td><%= user_app.name %> </td>
+        <td><%= user_app.email %> </td>
+        <td><%= user_app.ppic %> </td>
+      
+        <td><%= link_to 'Show', user_app %></td>
+        <td><%= link_to 'Edit', edit_user_app_path(user_app) %></td>
+        <td><%= link_to 'Destroy', user_app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User App', new_user_app_path %>

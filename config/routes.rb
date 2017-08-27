@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_apps
 get 'sessions/new'
 get 'schools/text', to: 'schools#text', as: 'text'
 get 'signup', to: 'users#new',        as: 'signup'
@@ -7,6 +8,7 @@ get 'logout', to: 'sessions#destroy', as: 'logout'
  
 resources :sessions
 resources :users
+resources :user_apps
 resources :schools do 
   resources :images ,:only => [:create, :destroy]
 end
@@ -45,6 +47,24 @@ namespace :api, :defaults => {:format => :json} do
         post    "/addNews",                    to: "news#add_new_news"
         post    "/getNewsSchool",              to: "news#getNewsSchool"
         post    "/getAllNewsbyDate",           to: "news#getAllNewsbyDate"
+
+        post     "/Authenticate",              to: "api#authenticate"
+
+        post     "/addPost",                   to: "api#addPost"
+        post     "/addComment",                to: "api#addComment"
+        
+        post     "/like",                       to: "api#like" 
+        post     "/unlike",                     to: "api#unlike" 
+        
+        get      "/listPosts",                   to: "api#listPosts"
+        get      "/listPostswithLike/:usrid",                   to: "api#listPostswithLike"
+        get      "/listComments/:id",            to: "api#listComments"
+        get      "/isLikedAllPosts/:id",         to: "api#isLikedAllPosts"
+        get      "/listUsers",                   to: "api#listUsers"
+
+        get      "/getPost/:id",                 to: "api#getPost"
+
+
     end
   end
 
