@@ -17,11 +17,21 @@ skip_before_action :verify_authenticity_token
 	 	#head :no_content
 	end
 
+ 	def getSchoolByCat
+    	@Schools = School.where(" \"school_eduSystem\" like '%" + params[:cat]+"%' and status = true")
+    	render json: @Schools.to_json
+    
+  	end
 
 
+  	def getRecentSchools
+    	@Schools = School.select("schools.*").where("status = true").order("schools.id desc").limit(5)
+    	render json: @Schools.to_json
+    
+  	end
 
   	def getTopRatingSchools
-    	@Schools = School.select("Distinct Schools.*").joins(' , "ratings" where "Schools"."id" = "ratings"."school_id" and ("ratings".rate1+"ratings".rate2+"ratings".rate3+ "ratings".rate4)/4.0 > ' + params[:id])
+    	@Schools = School.select("schools.*").joins(' , "ratings" where schools."id" = "ratings"."school_id" and ("ratings".rate1+"ratings".rate2+"ratings".rate3+ "ratings".rate4)/4.0 > ' + params[:id])
     	render json: @Schools.to_json
     
   	end

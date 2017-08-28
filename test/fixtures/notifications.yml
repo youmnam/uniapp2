@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: MyString
+  from: MyString
+  numnotifi: 1
+
+two:
+  user: MyString
+  from: MyString
+  numnotifi: 1

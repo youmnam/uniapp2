@@ -11,8 +11,10 @@ def authenticate
           render json: user 
       end
   end
-
-
+def authenticateSchool
+  @users  = School.select("id, school_name, school_email, \"chateEnable\" ").where("id="+  params[:school_id] + " and token ='" + params[:school_token] + "' ")
+  render json: @users.to_json  
+end
 def listUsers
   @users  = UserApp.all
   render json: @users 
@@ -30,10 +32,14 @@ def addPost
 
 end
 
+def enableChat
+      @school = School.find(params[:id]) 
+      @school.update(:chateEnable => true )
+end
+
 
 def listPosts
-  
- 
+   
    @post  = Post.select(" posts.*, user_apps.name, user_apps.ppic
     , (select count(comments.id) from comments where posts.id = comments.post_id group by comments.post_id)").joins(",user_apps where user_apps.id = posts.user_app_id")   
    
@@ -74,6 +80,20 @@ def addComment
 end
 
 
+
+def addRequest 
+
+   @request = Request.new(:school_id => params[:id]  , :seen => false)
+  if @request.save
+    render json: @request.to_json , status: :created
+  else 
+    render json: @request.errors
+  end 
+
+end
+
+
+
 def like
 
     @post = Post.find(params[:post_id])
@@ -89,6 +109,50 @@ def like
   
 
 end
+
+
+
+def addNotifications
+
+    @post = Notification.where("notifications.user ='" + params[:user_id]+ "'")
+    if(@post[0] == nil)
+        Notification.create(:user => params[:user_id].to_s ,  :from => params[:from_id].to_s, :numnotifi => 1 )
+    else
+       @post[0].update(:numnotifi => (@post[0].numnotifi+1))
+    end
+
+   render json: @post
+  
+
+end
+
+
+def getNotifications
+
+    @notifi = Notification.where("notifications.user = '" + params[:user_id]+ "'")
+puts @notifi
+   render json: @notifi
+  
+
+end
+
+
+def getNumNotifications
+
+    @notifi = Notification.where("notifications.user = '" + params[:user_id]+ "'").group("notifications.user").sum("notifications.numnotifi")
+puts @notifi
+   render json: @notifi[params[:user_id].to_s].to_json
+  
+
+end
+
+def seeNotifications
+
+    @post = Notification.where("notifications.user ='" + params[:user_id]+ "' and notifications.from='"+params[:from_id] +"'")
+    @post[0].update(:numnotifi => 0)
+
+end
+
 
 
 def unlike
@@ -131,5 +195,7 @@ def post_params
 def comment_params
       params.require(:comment).permit(:content, :user_app_id , :post_id)
     end
+
+
 
 end

@@ -29,6 +29,13 @@ namespace :api, :defaults => {:format => :json} do
         get     "/getAllJobVacancies",           to: "school_api#get_all_job_vacancies"
         get     "/getSchoolInfo/:id",            to: "school_api#get_school_info"
         post    "/addmission",                   to: "school_api#addmission"
+        get     "/getSchoolByCat/:cat",         to: "school_api#getSchoolByCat"
+        get     "/getSchoolByCat/:cat",         to: "school_api#getSchoolByCat"
+
+        get     "/getRecentSchools",         to: "school_api#getRecentSchools"
+       
+
+
 
         post    "/add_school_rating",            to: "ratings#add_school_rating"
     	  post    "/getSchoolRating",              to: "ratings#getSchoolRating"
@@ -63,8 +70,15 @@ namespace :api, :defaults => {:format => :json} do
         get      "/listUsers",                   to: "api#listUsers"
 
         get      "/getPost/:id",                 to: "api#getPost"
+        get      "/addRequest/:id",             to: "api#addRequest"
+        post     "/AuthenticateSchool",              to: "api#authenticateSchool"
 
-
+        get      "/enableChat/:id",                 to: "api#enableChat"
+        post      "/addNotifications",             to: "api#addNotifications"
+        post      "/seeNotifications",              to:  "api#seeNotifications"
+        get      "/getNotifications/:user_id",             to: "api#getNotifications"
+        get      "/getNumNotifications/:user_id",             to: "api#getNumNotifications"
+     
     end
   end
 

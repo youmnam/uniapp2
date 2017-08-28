@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826131140) do
+ActiveRecord::Schema.define(version: 20170828071250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170826131140) do
     t.index ["school_id"], name: "index_news_on_school_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "user"
+    t.string "from"
+    t.integer "numnotifi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "postlikes", force: :cascade do |t|
     t.bigint "user_app_id"
     t.bigint "post_id"
@@ -76,6 +84,14 @@ ActiveRecord::Schema.define(version: 20170826131140) do
     t.text "email"
     t.text "comment"
     t.index ["school_id"], name: "index_ratings_on_school_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "school_id"
+    t.boolean "seen"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_requests_on_school_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -113,6 +129,7 @@ ActiveRecord::Schema.define(version: 20170826131140) do
     t.boolean "status", default: false
     t.date "expire"
     t.boolean "specialNeed", default: false
+    t.boolean "chateEnable", default: false
   end
 
   create_table "tutors", force: :cascade do |t|
@@ -149,4 +166,5 @@ ActiveRecord::Schema.define(version: 20170826131140) do
   add_foreign_key "postlikes", "user_apps"
   add_foreign_key "posts", "user_apps"
   add_foreign_key "ratings", "schools"
+  add_foreign_key "requests", "schools"
 end

@@ -26,6 +26,7 @@ class SchoolSerializer < ActiveModel::Serializer
              :school_swimmingPool,
              :school_logo,
              :school_images,
-             :specialNeed 
+             :specialNeed,
+             :chateEnable 
 
   end
