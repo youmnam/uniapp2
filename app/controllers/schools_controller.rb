@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   
   #before_action :set_school
   before_action :authorize, only: [:index, :show, :edit, :update, :destroy]
-  before_action :authorize, except: [:create ,:new, :apply]
+  before_action :authorize, except: [:create ,:new, :apply, :edit]
   
   # GET /schools
   # GET /schools.json
