@@ -56,7 +56,8 @@ namespace :api, :defaults => {:format => :json} do
         post    "/getAllNewsbyDate",           to: "news#getAllNewsbyDate"
 
         post     "/Authenticate",              to: "api#authenticate"
-
+        get      "/getUser/:id",                   to: "api#getUser"
+        
         post     "/addPost",                   to: "api#addPost"
         post     "/addComment",                to: "api#addComment"
         

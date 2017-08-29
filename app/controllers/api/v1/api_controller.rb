@@ -20,6 +20,11 @@ def listUsers
   render json: @users 
 end
 
+def getUser
+  @users  = UserApp.find(params[:id])
+  render json: @users 
+end
+
 
 def addPost
 
