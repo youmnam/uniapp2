@@ -154,9 +154,9 @@ end
 def seeNotifications
 
     @post = Notification.where("notifications.user ='" + params[:user_id]+ "' and notifications.from='"+params[:from_id] +"'")
-    if(post[0] != nil)
-    @post[0].update(:numnotifi => 0)
     
+    @post[0].update(:numnotifi => 0)
+
 end
 
 
