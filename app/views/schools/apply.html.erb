@@ -18,28 +18,28 @@
       <h4> Application Info</h4>
       
       <div class="input-group input-group-icon">   
-            <%= form.text_field :employee_name, id: :employee_name, placeholder: "Full Name"%>
+            <%= text_field_tag :employee_name, id: :employee_name, placeholder: "Full Name"%>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
   
       <div class="input-group input-group-icon">
-            <%= form.text_field :email, id: :email, placeholder: "Email"%>
+            <%= text_field_tag :email, id: :email, placeholder: "Email"%>
         <div class="input-icon"><i class="fa fa-envelope"></i></div>
       </div>
       
       <div class="input-group input-group-icon">
-             <%= form.text_field :telephone_no, id: :telephone_no, placeholder: "Phone Number"%>
+             <%= text_field_tag :telephone_no, id: :telephone_no, placeholder: "Phone Number"%>
         <div class="input-icon"><i class="fa fa-phone"></i></div>
       </div>
     
-    <div class="input-group">
-       <label for="cv_path">CV</label> <%= file_field_tag "upload cv (pdf)" , "accept"=> ".pdf" %>
-    </div>
+<div class="input-group">
+   <label for="cv_path">CV</label> <%= file_field_tag "upload cv (pdf)" , "accept"=> ".pdf" %>
+</div>
        
     
     <div class="actions">
-    <%= submit_tag "Apply" %>
+    <%= submit_tag "apply" %>
   </div>
 
   <% end %>
