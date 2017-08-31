@@ -119,14 +119,14 @@ end
 
 def addNotifications
 
-    @post = Notification.where("notifications.user ='" + params[:user_id]+ "' and notifications.from = '"+ params[:from]+"'")
+    @post = Notification.where("notifications.user ='" + params[:user_id]+ "' and notifications.from = '"+ params[:from_id] +"'")
     if(@post[0] == nil)
         Notification.create(:user => params[:user_id].to_s ,  :from => params[:from_id].to_s, :numnotifi => 1 )
     else
        @post[0].update(:numnotifi => (@post[0].numnotifi+1))
     end
 
-   render json: @post
+  
   
 
 end
@@ -154,9 +154,10 @@ end
 def seeNotifications
 
     @post = Notification.where("notifications.user ='" + params[:user_id]+ "' and notifications.from='"+params[:from_id] +"'")
-    
+    if @post[0] != nil
     @post[0].update(:numnotifi => 0)
 
+    end
 end
 
 
