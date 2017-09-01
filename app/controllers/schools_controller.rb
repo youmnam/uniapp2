@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   
   #before_action :set_school
   before_action :authorize, only: [:index, :show, :edit, :update, :destroy]
-  before_action :authorize, except: [:create ,:new, :apply, :edit]
+  before_action :authorize, except: [:create ,:new, :apply, :edit, :update, :add_more_images]
   
   # GET /schools
   # GET /schools.json
@@ -63,7 +63,7 @@ def update
   else
     respond_to do |format|
       if @school.update(update_params)
-        format.html { redirect_to schools_url, notice: "#{@school.school_name} Was Successfully updated."  }
+        format.html {render :editsucc }
         format.json { render :show, status: :ok, location: @school }
       else
         format.html { render :edit }
