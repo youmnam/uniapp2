@@ -79,6 +79,7 @@ skip_before_action :verify_authenticity_token
 
 	def Search_school
       @school = School.find_school(params[:search_school])
+      puts @school
       render json: @school
     end
 

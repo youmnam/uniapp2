@@ -37,15 +37,15 @@ def self.find_school( searchCrieria )
  $query = " 1 = 1 "
  
  if searchCrieria[:educational_approach] != "" && searchCrieria[:educational_approach] != " '' " 
- 		$query += " AND  \"school_eduSystem\" in " + "("+ searchCrieria[:educational_approach] +") "
+ 		$query += " AND  \"school_eduSystem\" IN " + "("+ searchCrieria[:educational_approach] +") "
  end
 
  if searchCrieria[:area] != "" && searchCrieria[:area] != " '' "
     $query += " AND  school_area in " + "("+searchCrieria[:area]+")"
  end
 
- if searchCrieria[:specialNeed] != "" && searchCrieria[:specialNeed] != " '' "
-    $query += " AND  specialNeed = " +searchCrieria[:specialNeed]+""
+ if searchCrieria[:specialNeed] != nil && searchCrieria[:specialNeed] != "" && searchCrieria[:specialNeed] != " '' "
+    $query += " AND  \"specialNeed\" = " +searchCrieria[:specialNeed]+""
  end
 
  
@@ -59,7 +59,7 @@ def self.find_school( searchCrieria )
 
 
    
-  $query  += " AND \"school_feesRange\"::integer " + " BETWEEN  " + "#{searchCrieria[:FFees]}" +" AND " + "#{searchCrieria[:TFees]}"
+  $query  += " AND \"school_feesRange\" != '' AND \"school_feesRange\"::integer " + " BETWEEN  " + "#{searchCrieria[:FFees]}" +" AND " + "#{searchCrieria[:TFees]}"
   
   where($query)
  
