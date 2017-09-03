@@ -36,8 +36,28 @@ def self.find_school( searchCrieria )
  
  $query = " 1 = 1 "
  
- if searchCrieria[:educational_approach] != "" && searchCrieria[:educational_approach] != " '' " 
- 		$query += " AND  \"school_eduSystem\" IN " + "("+ searchCrieria[:educational_approach] +") "
+ if searchCrieria[:educational_approach].length != 0 && searchCrieria[:educational_approach] != " '' " 
+ 		#$query += " AND  \"school_eduSystem\" IN " + "("+ searchCrieria[:educational_approach] +") "
+       $eduQuery = ""
+
+         
+			
+			searchCrieria[:educational_approach].each do |c|
+			
+			    $eduQuery += "  \"school_eduSystem\" like   "
+				$eduQuery += "'%#{c}%' or "  
+			 	 
+		end
+			n = $eduQuery.size
+			$ValuesIn = $eduQuery[0..n-4]
+			 
+			
+			
+			$query += " AND "+ $ValuesIn +" "		
+			
+			#if $ValuesIn.size != 2
+			#$query += " AND  \"school_eduSystem\" like " + " "+ $ValuesIn +" "		
+			#end 
  end
 
  if searchCrieria[:area] != "" && searchCrieria[:area] != " '' "

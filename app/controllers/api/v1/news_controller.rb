@@ -44,7 +44,21 @@ end
 	end
 	
 	
+	def delete_news
 	
+	
+	  News.find(params[:news_id]).destroy
+	  @school = School.all
+      render json: @school
+		
+	end
+	
+def GetSchoolNews
+      @news = News.where(" school_id ="+ params[:id])
+      render json: @news
+
+end
+
 	
     private
     def news_params

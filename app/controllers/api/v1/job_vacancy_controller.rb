@@ -31,6 +31,22 @@ skip_before_action :verify_authenticity_token
   
   end
 
+def GetSchoolJobs
+      @jobs = JobVacancy.where(" school_id = '" + params[:id] + "'")
+      render json: @jobs
+
+end
+
+def delete_job
+  
+  
+    JobVacancy.find(params[:job_id]).destroy
+    @school = School.all
+      render json: @school
+    
+  end
+
+
 	private
 
 	def job_vacancies_param

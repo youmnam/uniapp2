@@ -33,9 +33,12 @@ namespace :api, :defaults => {:format => :json} do
         get     "/getSchoolByCat/:cat",         to: "school_api#getSchoolByCat"
 
         get     "/getRecentSchools",         to: "school_api#getRecentSchools"
-       
+      
+       get    "/delete_job/:job_id",      to: "job_vacancy#delete_job"
+       get    "/delete_news/:news_id",      to: "news#delete_news"
 
-
+        get    "/getSchoolJobs/:id",      to: "job_vacancy#GetSchoolJobs"
+        get    "/getSchoolNews/:id",      to: "news#GetSchoolNews"
 
         post    "/add_school_rating",            to: "ratings#add_school_rating"
     	  post    "/getSchoolRating",              to: "ratings#getSchoolRating"
