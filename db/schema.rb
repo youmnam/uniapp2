@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828071250) do
+ActiveRecord::Schema.define(version: 20170904082000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20170828071250) do
     t.string "school_certificate"
     t.string "school_eduSystem"
     t.boolean "school_foreignTeachers"
-    t.string "school_feesRange"
+    t.string "school_feesRange", default: "0"
     t.string "school_availableGrades"
     t.integer "school_age"
     t.string "school_website"
