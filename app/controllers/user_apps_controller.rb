@@ -24,6 +24,8 @@ class UserAppsController < ApplicationController
   # POST /user_apps
   # POST /user_apps.json
   def create
+    @user_app = UserApp.find(params[:user_app][:email])
+    
     @user_app = UserApp.new(user_app_params)
 
     respond_to do |format|

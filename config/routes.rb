@@ -14,6 +14,7 @@ resources :schools do
 end
 
 match 'schools/remove_post/:id'       ,  :to => 'schools#remove_post'   , :as => 'remove_post'    ,:via => :get
+match 'schools/remove_tutor/:id'       ,  :to => 'schools#remove_tutor'   , :as => 'remove_tutor'    ,:via => :get
 match 'schools/apply/:id'       ,  :to => 'schools#apply'   , :as => 'applyview'          ,:via => :get
 match 'schools/applyjob/:id'       ,  :to => 'schools#applyjob'   , :as => 'apply'          ,:via => :post
 match 'schools/:school_id/images', :to => 'images#create'   , :as => 'create_images'  ,:via => :post

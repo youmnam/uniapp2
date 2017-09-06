@@ -9,10 +9,15 @@ class SchoolsController < ApplicationController
   def index
     @schools = School.all
     @posts = Post.all
+    @tutors = Tutor.all
     render :index
   end
 
   def remove_post
+     @schools = School.all
+    @posts = Post.all
+    @tutors = Tutor.all
+
     @post = Post.find(params[:id])
     @comments = Comment.where( "post_id = " + params[:id])
     @likes = Postlike.where( "post_id = " + params[:id])
@@ -22,6 +27,22 @@ class SchoolsController < ApplicationController
         render :index
       end
     end
+  
+    
+  end
+
+
+  def remove_tutor
+     @schools = School.all
+    @posts = Post.all
+    @tutors = Tutor.all
+
+    @tutor = Tutor.find(params[:id])
+     if @tutor.destroy
+        render :index
+    end
+
+    
   end
 
   # GET /schools/1

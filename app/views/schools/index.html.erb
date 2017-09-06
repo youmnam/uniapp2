@@ -22,10 +22,15 @@ tr:nth-child(even) {
 <body>
 
 <p id="notice"><%= notice %></p>
+ <h2> Posts </h2>
     <% @posts.each do |p| %>
     <%=p.id %>---<%=p.title %>---<%= link_to 'remove', remove_post_path(p) %></br>
     <%end%>
 
+<h2> Mentors </h2>
+    <% @tutors.each do |t| %>
+    <%=t.id %>---<%=t.email %>---<%= link_to 'remove', remove_tutor_path(t) %></br>
+    <%end%>
 
 <h1>Schools</h1>
 
