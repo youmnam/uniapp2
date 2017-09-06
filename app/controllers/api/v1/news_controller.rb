@@ -28,7 +28,7 @@ end
 	#"date":"29/07/2017"
 
 	#@news =   School.select("Schools.*, News.*").joins(",News where News.school_id = schools.id and to_char(News.date, 'DD/MM/YYYY')  >=  '"+params[:date]+"'") 
-	@news =   School.select("Schools.*, News.*").joins(",News where News.school_id = schools.id and News.date  >=  '"+params[:date]+"'::date") 	
+	@news =   School.select("Schools.*, News.*").joins(",News where News.school_id = schools.id and News.date  >=  '"+params[:date]+"'::date").order("News.id desc") 	
     render json: @news.to_json
 	
 	end

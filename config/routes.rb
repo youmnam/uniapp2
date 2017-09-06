@@ -13,6 +13,7 @@ resources :schools do
   resources :images ,:only => [:create, :destroy]
 end
 
+match 'schools/remove_post/:id'       ,  :to => 'schools#remove_post'   , :as => 'remove_post'    ,:via => :get
 match 'schools/apply/:id'       ,  :to => 'schools#apply'   , :as => 'applyview'          ,:via => :get
 match 'schools/applyjob/:id'       ,  :to => 'schools#applyjob'   , :as => 'apply'          ,:via => :post
 match 'schools/:school_id/images', :to => 'images#create'   , :as => 'create_images'  ,:via => :post
@@ -82,6 +83,8 @@ namespace :api, :defaults => {:format => :json} do
         post      "/seeNotifications",              to:  "api#seeNotifications"
         get      "/getNotifications/:user_id",             to: "api#getNotifications"
         get      "/getNumNotifications/:user_id",             to: "api#getNumNotifications"
+
+
      
     end
   end

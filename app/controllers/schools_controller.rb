@@ -8,7 +8,20 @@ class SchoolsController < ApplicationController
   # GET /schools.json
   def index
     @schools = School.all
+    @posts = Post.all
     render :index
+  end
+
+  def remove_post
+    @post = Post.find(params[:id])
+    @comments = Comment.where( "post_id = " + params[:id])
+    @likes = Postlike.where( "post_id = " + params[:id])
+     if @comments.destroy_all
+        if @likes.destroy_all
+        @post.destroy
+        render :index
+      end
+    end
   end
 
   # GET /schools/1

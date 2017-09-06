@@ -7,8 +7,6 @@ def authenticate
   user = UserApp.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
           render json: user.to_json
-       else
-          render json: user 
       end
   end
 def authenticateSchool
@@ -72,6 +70,9 @@ def getPost
   @post = Post.find(params[:id])
   render json: @post
 end
+
+
+
 
 def addComment 
 
