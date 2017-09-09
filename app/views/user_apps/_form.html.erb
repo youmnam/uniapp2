@@ -14,6 +14,7 @@
 
  
 <div class="container">
+<p id="notice"><%= notice %></p>
 <%= form_with(model: user_app, local: true) do |form| %>
       <% if user_app.errors.any? %>
           <div id="error_explanation">

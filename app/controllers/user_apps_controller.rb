@@ -24,18 +24,22 @@ class UserAppsController < ApplicationController
   # POST /user_apps
   # POST /user_apps.json
   def create
-    @user_app = UserApp.find(params[:user_app][:email])
-    
-    @user_app = UserApp.new(user_app_params)
+    @user_app = UserApp.where("email = '" + params[:user_app][:email] +"'")
+    if(@user_app[0] == nil) 
+        @user_app = UserApp.new(user_app_params)
 
-    respond_to do |format|
-      if @user_app.save
-        format.html { redirect_to @user_app, notice: 'successfully registered.' }
-        format.json { render :show, status: :created, location: @user_app }
-      else
-        format.html { render :new }
-        format.json { render json: @user_app.errors, status: :unprocessable_entity }
-      end
+        respond_to do |format|
+          if @user_app.save
+            format.html { redirect_to @user_app, notice: 'successfully registered.' }
+            format.json { render :show, status: :created, location: @user_app }
+          else
+            format.html { render :new }
+            format.json { render json: @user_app.errors, status: :unprocessable_entity }
+          end
+         end
+    else
+       @user_app = UserApp.new
+       redirect_to new_user_app_path , notice: 'This email is already registered!'
     end
   end
 
